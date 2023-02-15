@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+        <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+            <a href="#home" class="w3-bar-item w3-button"><b>BR</b> Architects</a>
+            <!-- Float links to the right. Hide them on small screens -->
+            <div class="w3-right w3-hide-small">
+                <a href="#projects" class="w3-bar-item w3-button">Projects</a>
+                <a href="#about" class="w3-bar-item w3-button">About</a>
+                <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+            </div>
+        </div>
+    </div>
+    <!-- Header -->
+    <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+        <img class="w3-image" src="../w3images/architect.jpg" alt="Architecture" width="1500" height="800">
+        <div class="w3-display-middle w3-margin-top w3-center">
+            <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>BR</b></span> <span
+                        class="w3-hide-small w3-text-light-grey">Architects</span></h1>
+        </div>
+    </header>
+
+    <div class="w3-container w3-padding-32" id="about">
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">About</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+
+        </p>
+    </div>
+    <div class="w3-row-padding">
+        {%for article in article%}
+        <div class="w3-col l4 m6 w3-margin-bottom">
+            <img src="{{ vich_uploader_asset(article, 'imageFile')}}" alt="John" style="width:100%;height: auto;">
+            <h3>{{article.title}}</h3>
+            <p class="w3-opacity">{{article.description}}</p>
+            <a href="{{  path('show',{'id': article.id})}}"><button class="w3-button w3-light-grey w3-block">commenter</button>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}

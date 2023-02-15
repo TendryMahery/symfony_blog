@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('w3css/w3.css') }}">
+    {% block stylesheets %}
+    {#{{ encore_entry_link_tags('app') }}#}
+    {% endblock %}
+
+    {% block javascripts %}
+    {#{{ encore_entry_script_tags('app') }}#}
+    {% endblock %}
+</head>
+
+<body>
+
+    <header class="p-3 bg-dark text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href=""><i class="fab fa-blogger-b"></i></a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li>
+                        <a href="" class="nav-link px-2 text-white">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="" class="nav-link px-2 text-white">Les articles</a>
+                    </li>
+                    <li>
+                        <a href="" class="nav-link px-2 text-white"></a>
+                    </li>
+                    <li>
+                        <a href="{{path('admin')}}" class="nav-link px-2 text-white">Admin</a>
+                    </li>
+                </ul>
+
+                <div class="text-end">
+                    {%if not app.user%}
+                    <a href="{{path('connexion')}}" class="btn btn-success">Connexion</button>
+                    </a>
+                    {%else%}
+                    <a href="{{path('deconnexion')}}" class="btn btn-danger sm">
+                        Deconnexion</button>
+                    </a>
+                    {%endif%}
+                    <a href="{{path('inscription')}}" class="btn btn-outline-primary">
+                        Inscription</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <script src="fontawesome/all.js"></script>
+    {% block body %}
+    {% endblock %}
+</body>
+
+</html>

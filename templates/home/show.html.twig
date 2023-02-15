@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    <div class="album py-5 bg-light">
+    <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <div class="col">
+    <div class="card shadow-sm">
+        <img src="{{ vich_uploader_asset(article, 'imageFile')}}" alt="" srcset="">
+        <title>{{article.title}}</title>
+        <div class="card-body">
+            <p class="card-text">{{article.description}}</p>
+            <div class="commentaire">
+                <h1>comms</h1>
+                {{ form_start(form) }}
+                {{ form_row(form.description) }}
+                <button type="submit" class="btn btn-primary">post</button>
+                {{ form_end(form) }}
+                <h5>Commentaire</h5>
+                <div class="">
+                    <table>
+                        <thead>
+                        {% for comm in article.commentaire %}
+                        <tr>
+                            <th scope="col">{{ comm.utilisateur.prenom }}</th>
+                            <th scope="col">{{ comm.description }}</th>
+                        </tr>
+                        {% endfor %}
+                        </thead>
+
+                    </table>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

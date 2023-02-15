@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UtilisateurController!{% endblock %}
+
+{% block body %}
+<h1>Connexion</h1>
+<div class="container">
+    <form action="{{path('connexion')}}" method="post">
+        <div class="form-group col-md-4">
+            <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">prenom</label>
+            <input class="form-control form-control-sm" name="_username" type="text" placeholder="prenom"
+                id="inputSmall">
+            <label class="col-form-label col-form-label-sm mt-4" for="inputSmall">mot de passe</label>
+            <input class="form-control form-control-sm" name="_password" type="password" placeholder="mot de passe"
+                id="inputSmall">
+            <button type="submit" class="btn btn-primary">connexion</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

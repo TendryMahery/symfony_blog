@@ -1,0 +1,11 @@
+ /**
+     * @Vich\UploadableField(mapping="peinture_image",fileNameProperty="image_nom")
+     * @var File
+     */ 
+    private $imageFile;
+
+    @Vich\Uploadable
+
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File;

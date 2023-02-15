@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="d-flex">
+        <div class="col-md-8">
+            <table class="table  table-sm table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">titre</th>
+                    <th scope="col">description</th>
+                    <th scope="col">nombre de commentaire</th>
+                    <th scope="col">photo</th>
+                    <th scope="col">action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for article in article %}
+                <tr class="">
+                    <th scope="row">{{ article.id }}</th>
+                    <td>{{ article.title }}</td>
+                    <td>{{ article.description }}</td>
+                    <td>{{ article.commentaire | length }}</td>
+                    <td><img src="{{ vich_uploader_asset(article, 'imageFile')}}" width="30px" height="30px"/></td>
+                    <td>
+                        <a href="{{ path('edit',{'id':article.id}) }}"><button class="btn-sm btn-success">edit</button></a>
+                        <a href=""><button class="btn-sm btn-danger">supprimer</button></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+        <div class="col-md-4 mx-4">
+            <h3>Ajouter un article</h3>
+            <div>
+
+                <div class="form-group">
+                    {{form_start(form)}}
+                    {{form_row(form.title)}}
+                    {{form_row(form.description)}}
+                    {{form_row(form.imageFile)}}
+                    {{form_rest(form)}}
+                    <button class="btn btn-primary">Ajouter</button>
+                    {{form_end(form)}}
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </div>
+
+{% endblock %}
