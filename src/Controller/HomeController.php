@@ -66,6 +66,7 @@ class HomeController extends AbstractController
             }else{
                 $this->addFlash('error',"Vous n'êtes pas authentifier");
             }
+
         }
         return $this->render('home/show.html.twig', [
             'controller_name' => 'AdminController',

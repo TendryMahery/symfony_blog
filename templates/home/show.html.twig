@@ -25,7 +25,7 @@
                         {% for comm in article.commentaire %}
                         <tr>
                             <th scope="col">{{ comm.utilisateur.prenom }}</th>
-                            <th scope="col">{{ comm.description }}</th>
+                            <th>:->{{ comm.description }} <i class="fas fa-edit"></i></th>
                         </tr>
                         {% endfor %}
                         </thead>

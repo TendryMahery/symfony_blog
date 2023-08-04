@@ -48,5 +48,6 @@ class UtilisateurController extends AbstractController
      */
     public function deconnexion(): Response
     {
+       
     }
 }

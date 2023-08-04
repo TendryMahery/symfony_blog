@@ -18,21 +18,21 @@ class AdminController extends AbstractController
      * @Route("/admin", name="admin")
      * @Route("/edit/{id}", name="edit")
      */
-    public function index(Article $article = null,Request $request, ManagerRegistry $manager,ArticleRepository $repo): Response
+    public function index(Article $article = null, Request $request, ManagerRegistry $manager, ArticleRepository $repo): Response
     {
-        if (!$article){
+        if (!$article) {
             $article = new Article();
         }
         $entityManager = $manager->getManager();
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            if(!$article->getId()){
+            if (!$article->getId()) {
                 $article->setCreatedAt(new \DateTimeImmutable());
             }
-                $entityManager->persist($article);
-                $entityManager->flush();
-                return $this->redirectToRoute('admin');
+            $entityManager->persist($article);
+            $entityManager->flush();
+            return $this->redirectToRoute('admin');
         }
         $art = $repo->findAll();
         return $this->render('admin/admin.html.twig', [
@@ -41,6 +41,14 @@ class AdminController extends AbstractController
             'article' => $art
         ]);
     }
-
-
+    /**
+     * Undocumented function
+     *
+     * @Route("delete", name="delete")
+     */
+    public function delete(Request $request)
+    {
+        dump($request);
+        return $this->redirect('admin');
+    }
 }

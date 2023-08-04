@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('w3css/w3.css') }}">
+    
     {% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
     {#{{ encore_entry_link_tags('app') }}#}
     {% endblock %}
 
@@ -39,7 +39,7 @@
 
                 <div class="text-end">
                     {%if not app.user%}
-                    <a href="{{path('connexion')}}" class="btn btn-success">Connexion</button>
+                    <a href="{{path('connexion')}}" class="btn btn-success">Connexion</button> 
                     </a>
                     {%else%}
                     <a href="{{path('deconnexion')}}" class="btn btn-danger sm">
@@ -53,7 +53,7 @@
             </div>
         </div>
     </header>
-    <script src="fontawesome/all.js"></script>
+    <script src="fontawesome/js/all.js"></script>
     {% block body %}
     {% endblock %}
 </body>
